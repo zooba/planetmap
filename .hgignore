@@ -1,0 +1,10 @@
+syntax: glob
+*.pyc
+*.user
+.ptvs
+.vs/
+__pycache__
+DataService/env*
+obj/
+PlanetMap/bin/AzureSetup.cfg
+PlanetMap/env*
