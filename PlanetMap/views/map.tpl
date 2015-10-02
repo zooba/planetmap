@@ -4,17 +4,46 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Planet Map</title>
-    <link rel="stylesheet" type="text/css" href="/static/content/site.css" />
+    <link rel="stylesheet" type="text/css" href="/static/site.css" />
+
+    <style type="text/css">
+        div.solar-system {
+            background-color: black;
+            width: 600px;
+            height: 600px;
+        }
+
+        img#sun {
+            position: absolute;
+            left: 250px;
+            top: 250px;
+        }
+        % for name, value in [('mercury', mercury), ('venus', venus), ('earth', earth), ('mars', mars), ('jupiter', jupiter), ('saturn', saturn), ('uranus', uranus), ('neptune', neptune)]:
+        img#{{name}} { position: absolute; left: {{value[0] * 500}}px; top: {{value[1] * 500}}px; }
+        % end
+    </style>
 </head>
 
 <body>
-    <p>{{mercury}}</p>
-    <p>{{venus}}</p>
-    <p>{{earth}}</p>
-    <p>{{mars}}</p>
-    <p>{{jupiter}}</p>
-    <p>{{saturn}}</p>
-    <p>{{uranus}}</p>
-    <p>{{neptune}}</p>
+    <div class="solar-system">
+        % for name in ['sun', 'mercury', 'venus', 'earth', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune']:
+        <img src="/static/{{name}}.png" id="{{name}}" alt="{{name.title()}}"/>
+        % end
+    </div>
+
+    <form method="get" action="/map">
+        <input type="hidden" name="source" value="{{source}}" />
+        <input type="hidden" name="apikey" value="{{apikey}}" />
+        <p><label>Year: <input name="year" value="{{year}}" type="number" /></label></p>
+        <p><label>Month: <input name="month" value="{{month}}" type="number" /></label></p>
+        <p><label>Day: <input name="day" value="{{day}}" type="number" /></label></p>
+        <p><input type="submit" /></p>
+    </form>
+
+	<p class="small">
+    Images based on works by
+    <a href="http://www.astro.cornell.edu/~randerson/Inreach%20Web%20Page/inreach/uranus.html">Calvin J. Hamilton</a>
+    and <a href="http://www.nasa.gov/mission_pages/sunearth/news/News111312-m6flare.html">NASA</a>.
+    </p>
 </body>
 </html>

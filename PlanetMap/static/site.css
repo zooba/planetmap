@@ -1,0 +1,11 @@
+﻿
+body {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.small {
+    font-size: smaller;
+    opacity: 0.5;
+    position: absolute;
+    top: 95%;
+}

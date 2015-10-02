@@ -20,6 +20,8 @@
     <RootNamespace>PlanetMap</RootNamespace>
     <InterpreterId>{65431e37-c2ff-4c4f-b91d-bebe58fdb3a6}</InterpreterId>
     <InterpreterVersion>2.7</InterpreterVersion>
+    <WebBrowserPort>54372</WebBrowserPort>
+    <NameOfLastUsedPublishProfile>planetmap - Web Deploy</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,14 +37,28 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="static\" />
-    <Folder Include="static\css\" />
     <Folder Include="views\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="planetmap - Web Deploy.pubxml" />
+    <None Include="planetmap - FTP.pubxml" />
     <Content Include="requirements.txt" />
-    <Content Include="static\css\site.css" />
+    <Content Include="static\site.css" />
+    <Content Include="static\earth.png" />
+    <Content Include="static\jupiter.png" />
+    <Content Include="static\mars.png" />
+    <Content Include="static\mercury.png" />
+    <Content Include="static\neptune.png" />
+    <Content Include="static\saturn.png" />
+    <Content Include="static\source.png" />
+    <Content Include="static\sun.png" />
+    <Content Include="static\uranus.png" />
+    <Content Include="static\venus.png" />
+    <Content Include="static\web.config" />
     <Content Include="views\map.tpl" />
     <Content Include="views\index.tpl" />
+    <Content Include="web.config" />
+    <None Include="web.debug.config" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">
