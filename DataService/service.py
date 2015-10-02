@@ -10,7 +10,7 @@ if os.path.isfile(deployed_package):
 
 from vsop.planets import *
 
-@publish('45c8640925234741b3ebc29a8a03cbd7', '7e3b512fa4d24df88772bb4652528222',
+@publish('45c8640925234741b3ebc29a8a03cbd7', 'AUTH-TOKEN-GOES-HERE',
          files=[('vsop.zip', None)])
 def get_all_planets(year, month, day, hour):
     t = datetime(year, month, day, hour)
