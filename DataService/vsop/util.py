@@ -1,5 +1,4 @@
 ﻿from datetime import datetime, timedelta
-from collections.abc import Sequence
 
 __all__ = ['daterange']
 

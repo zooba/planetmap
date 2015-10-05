@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>bdc4b088-ff99-4883-99ae-50d0ad95042f</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>DataService.py</StartupFile>
+    <StartupFile>service.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -29,17 +29,23 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="service.py" />
+    <Compile Include="tests\test_util.py" />
+    <Compile Include="tests\test_vsop.py" />
+    <Compile Include="tests\__init__.py" />
+    <Compile Include="util.py" />
     <Compile Include="vsop\planets.py" />
     <Compile Include="vsop\util.py" />
     <Compile Include="vsop\vsop87\__init__.py" />
     <Compile Include="vsop\__init__.py" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="tests\" />
     <Folder Include="vsop\" />
     <Folder Include="vsop\vsop87\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="requirements.txt" />
+    <None Include="vsop.zip" />
     <Content Include="vsop\vsop87\VSOP87A.ear" />
     <Content Include="vsop\vsop87\VSOP87A.emb" />
     <Content Include="vsop\vsop87\VSOP87A.jup" />
