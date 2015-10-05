@@ -11,6 +11,7 @@
             background-color: black;
             width: 600px;
             height: 600px;
+            float: left;
         }
 
         img#sun {
@@ -21,6 +22,23 @@
         % for name, value in [('mercury', mercury), ('venus', venus), ('earth', earth), ('mars', mars), ('jupiter', jupiter), ('saturn', saturn), ('uranus', uranus), ('neptune', neptune)]:
         img#{{name}} { position: absolute; left: {{value[0] * 500}}px; top: {{value[1] * 500}}px; }
         % end
+
+        div.controls {
+            float: left;
+            width: 150px;
+            margin: 15px;
+        }
+
+        form {
+            width: 100%;
+            margin-top: 2em;
+            padding: 4%;
+            border: black 1px solid;
+        }
+
+        form p {
+            margin: 0;
+        }
     </style>
 </head>
 
@@ -31,14 +49,26 @@
         % end
     </div>
 
-    <form method="get" action="/map">
-        <input type="hidden" name="source" value="{{source}}" />
-        <input type="hidden" name="apikey" value="{{apikey}}" />
-        <p><label>Year: <input name="year" value="{{year}}" type="number" /></label></p>
-        <p><label>Month: <input name="month" value="{{month}}" type="number" /></label></p>
-        <p><label>Day: <input name="day" value="{{day}}" type="number" /></label></p>
-        <p><input type="submit" /></p>
-    </form>
+    <div class="controls">
+        % for k, d in [('Tomorrow', tomorrow), ('Next week', nextweek), ('Next month', nextmonth), ('Next year', nextyear)]:
+        % if d:
+        <p>
+            <a href="/map?source={{source}}&apikey={{apikey}}&{{format(d, 'year=%Y&month=%m&day=%d')}}">
+                {{k}}<br />({{format(d, '%Y-%b-%d')}})
+            </a>
+        </p>
+        % end
+        % end
+
+        <form method="get" action="/map">
+            <input type="hidden" name="source" value="{{source}}" />
+            <input type="hidden" name="apikey" value="{{apikey}}" />
+            <p><label>Year: <input name="year" value="{{year}}" type="number" /></label></p>
+            <p><label>Month: <input name="month" value="{{month}}" type="number" /></label></p>
+            <p><label>Day: <input name="day" value="{{day}}" type="number" /></label></p>
+            <p><input type="submit" value="Update" /></p>
+        </form>
+    </div>
 
 	<p class="small">
     Images based on works by
