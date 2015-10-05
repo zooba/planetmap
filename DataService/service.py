@@ -14,7 +14,7 @@ from vsop.planets import *
 
 
 def get_all_planets(year, month, day):
-    # TODO: Handle ValueError
+    # TODO: Handle ValueError for invalid dates
     t = datetime(year, month, day)
     
     return {
@@ -37,6 +37,14 @@ if __name__ == '__main__':
     # TODO: Refactor into own function
     from azureml.services import publish
     from util import wait_for_service
+    import webbrowser
+    
+    print 'You will require an Azure Machine Learning workspace to deploy the service.'
+    print
+    if raw_input('Create a free workspace now? [y/N]').startswith('y'):
+        print 'Opening web browser. Log in with a Microsoft Account and access your workspace ID'
+        print 'and authorization token from Settings.'
+        webbrowser.open('https://studio.azureml.net/Home')
     
     workspace_id = raw_input('Please enter your workspace id:')
     auth_token = raw_input('Please enter your authorization token:')
