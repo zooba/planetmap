@@ -1,6 +1,12 @@
-﻿from datetime import datetime, timedelta
+﻿'''Utility functions for use with `vsop`.
+'''
 
-__all__ = ['daterange']
+__author__ = "Steve Dower <steve.dower@microsoft.com>"
+__version__ = "1.0.0"
+
+from datetime import datetime, timedelta
+
+__all__ = ['daterange', 'SolarSystemMap']
 
 def _make_date(d):
     if isinstance(d, (int, float)):

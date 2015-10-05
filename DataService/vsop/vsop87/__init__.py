@@ -3,6 +3,9 @@
 Data files obtained from ftp://ftp.imcce.fr/pub/ephem/planets/vsop87/
 '''
 
+__author__ = "Steve Dower <steve.dower@microsoft.com>"
+__version__ = "1.0.0"
+
 import pkgutil
 import re
 
