@@ -1,6 +1,6 @@
-from azureml.services import publish
 from datetime import datetime
 
+#region Boilerplate for deployed service
 # If we've published, we need to add the package to sys.path
 # so the following import succeeds.
 import os, sys
@@ -8,12 +8,15 @@ deployed_package = os.path.abspath(r'Script Bundle\vsop.zip')
 if os.path.isfile(deployed_package):
     sys.path.append(deployed_package)
 
+#endregion
+
 from vsop.planets import *
 
-@publish('45c8640925234741b3ebc29a8a03cbd7', 'AUTH-TOKEN-GOES-HERE',
-         files=[('vsop.zip', None)])
-def get_all_planets(year, month, day, hour):
-    t = datetime(year, month, day, hour)
+
+def get_all_planets(year, month, day):
+    # TODO: Handle ValueError
+    t = datetime(year, month, day)
+    
     return {
         "mercury": Mercury.position_at(t),
         "venus": Venus.position_at(t),
@@ -25,10 +28,22 @@ def get_all_planets(year, month, day, hour):
         "neptune": Neptune.position_at(t),
     }
 
+
+
 if __name__ == '__main__':
-    # If we're running directly, we've published the service and
-    # want to wait for it to finish, view the URL and the key.
+    # If we're running directly, we want to publish the service and
+    # wait for it to finish, then display the URL and the key.
+
+    # TODO: Refactor into own function
+    from azureml.services import publish
     from util import wait_for_service
+    
+    workspace_id = raw_input('Please enter your workspace id:')
+    auth_token = raw_input('Please enter your authorization token:')
+    
+    publish(get_all_planets, workspace_id, auth_token, files=[('vsop.zip', None)])
     print get_all_planets.service.url
     print get_all_planets.service.api_key
-    wait_for_service(get_all_planets, 2010, 1, 1, 0)
+    wait_for_service(get_all_planets, 2010, 1, 1)
+    print "Press enter to close . . ."
+    raw_input()
