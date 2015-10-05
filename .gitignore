@@ -5,6 +5,7 @@ syntax: glob
 .vs/
 __pycache__
 DataService/env*
+bin/
 obj/
 PlanetMap/bin/AzureSetup.cfg
 PlanetMap/env*
