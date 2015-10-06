@@ -1,4 +1,4 @@
-from datetime import datetime
+﻿from datetime import datetime
 
 #region Boilerplate for deployed service
 # If we've published, we need to add the package to sys.path
