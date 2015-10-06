@@ -1,11 +1,11 @@
-from time import clock, sleep
+﻿from time import clock, sleep
 
 def wait_for_service(fn, *a):
     print 'Preparing service.',
     while True:
         try:
             start_time = clock()
-            fn.service(*a)
+            fn(*a)
             print
             break
         except Exception:

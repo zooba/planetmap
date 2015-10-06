@@ -41,7 +41,7 @@ if __name__ == '__main__':
     
     print 'You will require an Azure Machine Learning workspace to deploy the service.'
     print
-    if raw_input('Create a free workspace now? [y/N]').startswith('y'):
+    if raw_input('Create a free workspace now? [y/N] ').startswith('y'):
         print 'Opening web browser. Log in with a Microsoft Account and access your workspace ID'
         print 'and authorization token from Settings.'
         webbrowser.open('https://studio.azureml.net/Home')
@@ -49,9 +49,9 @@ if __name__ == '__main__':
     workspace_id = raw_input('Please enter your workspace id:')
     auth_token = raw_input('Please enter your authorization token:')
     
-    publish(get_all_planets, workspace_id, auth_token, files=[('vsop.zip', None)])
-    print get_all_planets.service.url
-    print get_all_planets.service.api_key
-    wait_for_service(get_all_planets, 2010, 1, 1)
+    service = publish(get_all_planets, workspace_id, auth_token, files=[('vsop.zip', None)])
+    print service.url
+    print service.api_key
+    wait_for_service(service, 2010, 1, 1)
     print "Press enter to close . . ."
     raw_input()
