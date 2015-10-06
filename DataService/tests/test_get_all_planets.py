@@ -1,9 +1,9 @@
-import unittest
-from service import get_all_planets
+﻿import unittest
+import service
 
 class Test_get_all_planets(unittest.TestCase):
     def test_all_planets(self):
-        res = get_all_planets(2015, 10, 6)
+        res = service.get_all_planets(2015, 10, 6)
         self.assertIn("mercury", res.keys())
         self.assertIn("venus", res.keys())
         self.assertIn("earth", res.keys())
@@ -15,7 +15,7 @@ class Test_get_all_planets(unittest.TestCase):
         self.assertIn("pluto", res.keys())
 
     def test_invalid_date(self):
-        res = get_all_planets(2015, 02, 29)
+        res = service.get_all_planets(2015, 02, 29)
         # Invalid date should return a complete set of planets
         # with (0., 0., 0.) for all coordinates.
         self.assertSetEqual(
