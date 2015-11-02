@@ -8,4 +8,4 @@ DataService/env*
 bin/
 obj/
 PlanetMap/bin/AzureSetup.cfg
-PlanetMap/env*
+env/
