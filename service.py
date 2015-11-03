@@ -46,10 +46,12 @@ if __name__ == '__main__':
         print 'and authorization token from Settings.'
         webbrowser.open('https://studio.azureml.net/Home')
     
-    workspace_id = raw_input('Please enter your workspace id:')
-    auth_token = raw_input('Please enter your authorization token:')
+    workspace_id = raw_input('Please enter your workspace id: ')
+    auth_token = raw_input('Please enter your authorization token: ')
     
-    service = publish(get_all_planets, workspace_id, auth_token, files=[(r'packages\vsop.zip', None)])
+    with open(r'packages\vsop.zip', 'rb') as vsop_file:
+        vsop_content = vsop_file.read()
+    service = publish(get_all_planets, workspace_id, auth_token, files=[('vsop.zip', vsop_content)])
     print service.url
     print service.api_key
     wait_for_service(service, 2010, 1, 1)
